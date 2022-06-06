@@ -1,0 +1,329 @@
+/* 对于所有的body初始化样式都用这个 */
+body {
+    max-width: 540px;
+    min-width: 320px;
+    margin: 0 auto;
+    font: normal 14px/1.5 Tahoma, "Lucida Grande", Verdana, "Microsoft Yahei", STXihei, hei;
+    color: #000;
+    background: #f2f2f2;
+    overflow-x: hidden;
+    -webkit-tap-highlight-color: transparent;
+    /* height: 2000px; */
+}
+
+/* 设置ul的样式 */
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: #222;
+}
+
+/* 大多数的盒子直接使用css3盒子模型才可以 */
+div {
+    box-sizing: border-box;
+}
+
+.search-index {
+    display: flex;
+    /* 给定一个固定大小的盒子 */
+    position: fixed;
+    top: 0;
+    /* 移动的方向要清楚，要不然都不见了 */
+    left: 50%;
+    /* translateX是相比于自身的宽度来讲的 */
+    transform: translateX(-50%);
+    width: 100%;
+    min-width: 320px;
+    max-width: 540px;
+    height: 44px;
+    background-color: #f6f6f6;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+
+
+}
+
+.search {
+    height: 26px;
+    border: 1px solid #ccc;
+    line-height: 22px;
+    /* 右边盒子直接固定了，给左边设置flex即可 */
+    flex: 1;
+    font-size: 12px;
+    color: #666;
+    margin: 6px 10px;
+    /* padding 内容和边框之间的距离 */
+    padding-left: 25px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .4);
+}
+
+.search::before {
+    content: '';
+    /* 加了绝对定位的盒子是可以设置大小的 */
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    width: 15px;
+    height: 15px;
+    background: url(../images/sprite.png) no-repeat -59px -279px;
+    background-size: 104px auto;
+    margin: 5px;
+}
+
+.user {
+    /* 放入头像，直接用一个盒子固定住 */
+    width: 44px;
+    height: 44px;
+    font-size: 12px;
+    text-align: center;
+    color: #2eaae0;
+}
+
+/* 对于小元素 使用伪元素法 */
+.user::before {
+    content: '';
+    display: block;
+    width: 23px;
+    height: 23px;
+    background: url(../images/sprite.png) no-repeat -59px -194px;
+    background-size: 104px auto;
+    /* 左右auto会居中对齐 */
+    margin: 4px auto -3px;
+}
+
+.focus {
+    padding-top: 44px;
+}
+
+.focus img {
+    width: 100%;
+}
+
+.local-nav {
+    display: flex;
+    height: 64px;
+    background-color: #fff;
+    margin: 3px 4px;
+    border-radius: 8px;
+}
+
+/* 里面的每一个li各占一份即可 */
+.local-nav li {
+    flex: 1;
+}
+
+/* 要对里面的两个span进行操作，需要对其父元素进行设置样式 */
+.local-nav a {
+    display: flex;
+    /* 里面的子元素纵向显示 */
+    flex-direction: column;
+    /* 单行，侧轴居中显示 */
+    align-items: center;
+    font-size: 12px;
+}
+
+/* 当有多个类名相同的时候，可以使用属性选择器来进行选择操作 */
+/* 使用属性选择器的话，空格需要隔开 */
+.local-nav li [class ^="local-nav-icon"] {
+    /* 这里指的是类名 */
+    width: 32px;
+    height: 32px;
+    background-color: pink;
+    margin-top: 8px;
+    background: url(../images/localnav_bg.png) no-repeat 0 0;
+    background-size: 32px auto;
+}
+
+.local-nav li .local-nav-icon-icon2 {
+    background-position: 0 -32px;
+}
+
+.local-nav li .local-nav-icon-icon3 {
+    background-position: 0 -64px;
+}
+
+.local-nav li .local-nav-icon-icon4 {
+    background-position: 0 -96px;
+}
+
+.local-nav li .local-nav-icon-icon5 {
+    background-position: 0 -128px;
+}
+
+nav {
+    border-radius: 8px;
+    margin: 0 4px 3px;
+}
+
+.nav-common {
+    display: flex;
+    height: 88px;
+    /* background-color: pink; */
+    border-bottom: 1px solid #fff;
+}
+
+.nav-items:nth-child(2) {
+    /* margin: 3px 0; */
+}
+
+.nav-items {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.nav-items a {
+    flex: 1;
+    text-align: center;
+    line-height: 44px;
+    color: #fff;
+    font-size: 14px;
+    text-shadow: 1px 1px rgba(0, 0, 0, .2);
+}
+
+.nav-items a:nth-child(1) {
+    border-bottom: 1px solid #fff;
+}
+
+/* 第一列里面的a不需要下划线 */
+.nav-items:nth-child(1) a {
+    border: 0;
+    /* 靠底下对齐，水平居中对齐即可 */
+    background: url(../images/hotel.png) no-repeat bottom center;
+    background-size: 121px auto;
+}
+
+.nav-items:nth-child(-n+2) {
+    border-right: 1px solid #fff;
+}
+
+
+.nav-common:nth-child(1) {
+    background: -webkit-linear-gradient(left, #FA5A55, #fa994D)
+}
+
+.nav-common:nth-child(2) {
+    background: -webkit-linear-gradient(left, blue, skyblue)
+}
+
+.nav-common:nth-child(3) {
+    background: -webkit-linear-gradient(left, yellow, orange)
+}
+
+/* 侧导航栏 */
+.subnav-entry {
+    /* 子盒子肯定要用到flex布局，对父盒子进行操作即可 */
+    display: flex;
+    border-radius: 8px;
+    background-color: #fff;
+    margin: 0 4px;
+    /* 因为子盒子有10个肯定需要进行换行操作 */
+    flex-wrap: wrap;
+    padding: 5px 0;
+}
+
+.subnav-entry li {
+    /* 书写百分比相对于父盒子来讲 */
+    flex: 20%;
+}
+
+/* 想要对a标签里面的两个span标签进行操作 */
+.subnav-entry a {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.subnav-entry-icon {
+    width: 28px;
+    height: 28px;
+    background-color: pink;
+    margin-top: 4px;
+    background: url(../images/subnav-bg.png) no-repeat;
+    background-size: 28px auto;
+}
+
+/* 热门活动 */
+.sale-box {
+    border-top: 1px solid #bbb;
+    background-color: #fff;
+    /* 为了和上面的盒子形成一致 */
+    margin: 4px;
+}
+
+/* 里面的内容需要用到定位 */
+.sale-hd {
+    position: relative;
+    height: 44px;
+    border-bottom: 1px solid #ccc;
+}
+
+/* h2中有文字显示，将这些文字隐藏起来 */
+.sale-hd h2 {
+    position: relative;
+    text-indent: -99px;
+    overflow: hidden;
+}
+
+.sale-hd h2::after {
+    position: absolute;
+    top: 8px;
+    left: 20px;
+    content: '';
+    width: 79px;
+    height: 15px;
+    background: url(../images/hot.png) no-repeat 0 -20px;
+    background-size: 79px auto;
+}
+
+.more {
+    position: absolute;
+    right: 10px;
+    top: 0;
+    /* 采用渐变色的写法即可 */
+    background: -webkit-linear-gradient(left, #FF606c, #FF6BC6);
+    /* 其实没有大小就是靠a标签里面的文字来撑开的 */
+    border-radius: 15px;
+    padding: 3px 20px 3px 10px;
+    color: #fff;
+}
+
+/* 三角其实也是可以使用 伪元素来进行书写 */
+.more::after {
+    content: '';
+    position: absolute;
+    top: 9px;
+    right: 9px;
+    /* 给三角一定的宽度和高度 */
+    width: 7px;
+    height: 7px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    /* 创建好三角以后，顺时针旋转45度即可 */
+    transform: rotate(45deg);
+}
+
+
+.row {
+    display: flex;
+}
+
+.row a {
+    flex: 1;
+    border-bottom: 1px solid #eee;
+}
+
+.row a:nth-child(1) {
+    border-right: 1px solid #eee;
+}
+
+/* 实现的文件所给的图片太大的时候，我们需要将里面图片的大小设置为 100% */
+.row a img {
+    width: 100%;
+}
